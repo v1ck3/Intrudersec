@@ -13,12 +13,12 @@ const Contact = () => {
           Have questions, ideas, or just want to say hi? We’d love to hear from you. Reach out and we’ll get back to you as soon as we can.
         </p>
 
-        <div className="text-left md:text-center mt-16">
+        <div className="text-left md:text-center mt-16  ">
           <h3 className="text-3xl md:text-4xl font-semibold mb-4">📍 Our Location</h3>
           <p className="text-black text-lg md:text-xl mb-6">Delhi, India</p>
 
           <h3 className="text-3xl md:text-4xl font-semibold mb-4">📧 Email Us</h3>
-          <p className="text-black text-lg md:text-xl mb-6">support@intrudersec.in</p>
+          <p className="text-black text-lg md:text-xl mb-6 underline"><a href="mailto:support@intrudersec.in">support@intrudersec.in</a></p>
 
           <h3 className="text-3xl md:text-4xl font-semibold mb-4">📞 Call Us</h3>
           <p className="text-black text-lg md:text-xl">+91 9871 3073 90</p>
