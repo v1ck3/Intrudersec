@@ -11,7 +11,7 @@ const News = () => {
   const getData = async () => {
     setLoading(true);
     const response = await axios.get(
-      `https://newsapi.org/v2/everything?q=cybersecurity&from=2025-03-11&sortBy=publishedAt&apiKey=aa21227ac0bd466ba222d7f13a2d1d95`
+      `https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=aa21227ac0bd466ba222d7f13a2d1d95`
     );
     setData(response.data.articles);
     setLoading(false);
