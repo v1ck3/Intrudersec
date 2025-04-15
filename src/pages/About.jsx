@@ -23,7 +23,7 @@ const About = () => {
                 <li>
                   Comprehensive courses on ethical hacking and digital forensics
                 </li>
-                <li>Industry-recognized certifications</li>
+                
                 <li>Practical, hands-on learning environment</li>
                 <li>Access to cybersecurity blogs and tools</li>
               </ul>

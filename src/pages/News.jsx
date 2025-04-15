@@ -23,7 +23,7 @@ const News = () => {
   return (
     <>
     {loading ? (
-      Array.from({ length: 3 }).map((_, idx) => (
+      Array.from({ length: 5 }).map((_, idx) => (
         <div
           key={idx}
           className="p-4 m-5 bg-white border border-gray-200 rounded-lg shadow-sm animate-pulse"
