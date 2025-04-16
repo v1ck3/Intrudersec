@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Courses from "./Courses";
 import { HiArrowSmallDown } from "react-icons/hi2";
 import Marquee from "../components/Marquee";
-import asset from "../assets/in1.png";
+import asset from "../assets/In1.png";
 import asset1 from "../assets/CER1.png";
 
 const Home = () => {
