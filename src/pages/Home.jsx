@@ -22,7 +22,7 @@ const Home = () => {
         </p>
 
         <a
-          href="/home"
+          href="#"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-blue-600 mt-8 transition animate-bounce"

@@ -48,47 +48,9 @@ const Resources = () => {
             </div>
           </div>
 
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-100 dark:border-gray-100">
-            <div className="p-5">
-              <a href="https://www.discord.gg/36JGRMS9ne">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
-                Soon
-                </h5>
-              </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-700">
-                Learn the fundamentals of ethical hacking, cybersecurity tools,
-                and penetration testing techniques.
-              </p>
-              <a
-                target="_blank"
-                href="https://www.discord.gg/36JGRMS9ne"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Join Now
-              </a>
-            </div>
-          </div>
+          
 
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-100 dark:border-gray-100">
-            <div className="p-5">
-              <a href="https://www.discord.gg/36JGRMS9ne">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
-                Soon
-                </h5>
-              </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-700">
-                Learn the fundamentals of ethical hacking, cybersecurity tools,
-                and penetration testing techniques.
-              </p>
-              <a
-                target="_blank"
-                href="https://www.discord.gg/36JGRMS9ne"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Join Now
-              </a>
-            </div>
-          </div>
+          
         </div>
       </div>
 
