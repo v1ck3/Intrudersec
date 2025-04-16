@@ -1,75 +1,78 @@
-Intrudersec
-Intrudersec is a web application developed using React and Vite. It serves as a foundational template for building modern web applications, incorporating essential tools and configurations to streamline development.
+# 🕵️ Intrudersec
 
-Features
-React + Vite Integration: Combines the power of React with Vite's fast build tooling.
+## 🧠 What is Intrudersec?
 
-Hot Module Replacement (HMR): Enables real-time updates during development without full page reloads.
+**Intrudersec** is an **Indian-based cybersecurity training platform** founded in 2024, focused on:
 
-ESLint Configuration: Includes a basic ESLint setup to maintain code quality and consistency.
+- Ethical Hacking  
+- Penetration Testing  
+- Digital Forensics  
 
-Getting Started
-Prerequisites
-Node.js (version 14 or higher)
+Intrudersec delivers **expert-led**, hands-on courses that empower individuals to **safeguard digital assets** and counter cyber threats effectively.
 
-npm (comes with Node.js)
+> 👨‍💻[Vivek Poswal](https://github.com/v1ck3)
+> *Founder & Ethical Hacking Specialist*
 
-Installation
-Clone the repository:
+---
 
-bash
-Copy
-Edit
+## ✨ Features
+
+- ⚡ **Blazing-fast development** with Vite  
+- 🧩 **Component-based architecture** using React  
+- 🔄 **Live reload & Hot Module Replacement**  
+- ✅ **Clean code with ESLint**  
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose                   |
+|------------|---------------------------|
+| React      | UI Building               |
+| Vite       | Fast Bundling & Dev Server|
+| JavaScript | Language of the Web       |
+
+---
+
+## 🧪 Getting Started
+
+Follow these steps to run **Intrudersec** on your machine:
+
+### 1. Clone the Repo
+
+```bash
 git clone https://github.com/Vishal-sharmak7/Intrudersec.git
-Navigate to the project directory:
 
-bash
-Copy
-Edit
-cd Intrudersec
-Install dependencies:
+```
 
-bash
-Copy
-Edit
+### 2. Install Dependencies
+```bash
 npm install
-Running the Development Server
-Start the development server with:
 
-bash
-Copy
-Edit
+```
+### 3. Fire It Up
+```bash
 npm run dev
-This will launch the application at http://localhost:5173/ (default Vite port).
 
-Building for Production
-To build the application for production:
 
-bash
-Copy
-Edit
+
+```
+## 🏗️ Build for Production
+
+### Ready to deploy? Run:
+```bash
 npm run build
-The optimized and minified files will be generated in the dist directory.
 
-Previewing the Production Build
-To preview the production build locally:
+```
+## Preview the Production Build
 
-bash
-Copy
-Edit
+### To see how your site looks before deploying
+```bash
 npm run preview
 
+```
+## Live Demo
+
+https://intrudersec-intrusecs-projects.vercel.app/
 
 
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
