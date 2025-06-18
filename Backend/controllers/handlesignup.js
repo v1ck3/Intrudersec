@@ -1,5 +1,6 @@
 import user from "../models/user.model.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const handleuser = async (req, res) => {
   try {
@@ -39,17 +40,27 @@ const handlelogin = async (req, res) => {
         message: "User Not exist",
       });
     }
-    const newuser = new user({
-      email,
-      password,
-    });
+    
 
-    newuser.password = await bcrypt.compare(user.password, password);
+    const isEqual = await bcrypt.compare(password, User.password);
+    if (!isEqual) {
+      res.status(400).json({ message: "Authentication Failed" });
+    }
+    
+    const jwtToken = jwt.sign(
+      { email: User.email, _id: User._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
 
-    await console.log(newuser)
-    res.status(201).json({
-      message: "user register successfully",
+  
+
+    res.status(200).json({
+      jwtToken,
+      message: "Login Successfull",
       success: true,
+      email,
+      name: User.name,
     });
   } catch (error) {
     res.status(400).json({ error: "internal server error" });
