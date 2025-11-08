@@ -1,97 +1,104 @@
-import React, { useState } from "react";
+import React from "react";
+import { ArrowRight } from "lucide-react";
+import heroImg from "../assets/heromain1.png"; // <-- Replace with your image
+import About from "./About";
 import Courses from "./Courses";
-import { HiArrowSmallDown } from "react-icons/hi2";
-import Marquee from "../components/Marquee";
-import asset from "../assets/In1.png";
-import asset1 from "../assets/CER1.png";
+import Contact from "./Contact";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
-      <section className=" flex flex-col items-center justify-center text-center mt-20">
-        <p className="text-xl md:text-5xl text-black font-medium italic tracking-wider mb-3  ">
-          Welcome to
-        </p>
-        <h1 className="text-6xl md:text-9xl font-bold text-blue-600 leading-tight font-serif transition delay-10 duration-300 ease-in-out hover:-translate-z-1 hover:scale-90 hover:text-blue-800">
-          IntruderSec <br /> Academy
-        </h1>
+      <section className="bg-[#0A1D4A] text-white pt-10  relative overflow-hidden" >
+        <div className="container mx-auto max-w-7xl px-6 lg:px-10 relative z-10" data-aos="fade-in">
+          {/* Hero Text */}
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-xs bg-white/20 px-3 py-1 rounded-full uppercase tracking-wide">
+              #1 E-learning Platform 2025
+            </span>
 
-        <p className=" mt-10 text-2xl text-gray-700 mb-8  ">
-          Master Cyber Security from Scratch. Learn ethical hacking, threat
-          analysis, and digital defense with real-world projects.
-        </p>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-6">
+              Launch Career with <br /> Ready Online Courses
+            </h2>
 
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-600 mt-8 transition animate-bounce"
-        >
-          <HiArrowSmallDown size={50} />
-        </a>
+            <p className="text-gray-300 mt-5">
+              Join thousands of learners worldwide accessing cutting-edge
+              courses designed for modern minds.
+            </p>
+
+            <Link to="/Contact" className="mt-7 bg-[#F4FF2D] hover:bg-lime-300 text-black font-semibold px-8 py-3 rounded-full inline-flex items-center gap-2 transition hover:scale-105">
+              Enroll Our Course Now <ArrowRight size={20} />
+            </Link>
+          </div>
+
+          {/* Bottom Section */}
+          <div className="relative mt-16">
+            <div className="w-full max-w-2xl mx-auto bg-[#162B6F] h-80 rounded-t-full flex justify-center items-end relative">
+              <img
+                src={heroImg}
+                alt="student"
+                className="h-[390px] object-contain drop-shadow-xl -mt-20 relative z-10"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="bg-white w-full ">
+          <div className="flex justify-between text-sm text-black max-w-5xl mx-auto px-6 py-4">
+            <p data-aos="fade-left">
+              <strong className="flex text-black text-4xl">5000+ </strong> Top Notch
+              Courses
+            </p>
+
+            <div className="text-right max-w-xs" data-aos="fade-right">
+              <p className="text-yellow-300 text-lg">★★★★★</p>
+              <p className="text-sm">
+                "Modern, sleek, and focused on real skills. I loved the hands-on
+                projects and their system."
+              </p>
+              <p className="mt-1 text-gray-800">— Jason Kim, UX Designer</p>
+            </div>
+          </div>
+
+          {/* Company Logos */}
+          
+        </div>
       </section>
 
-      <Marquee />
-
-      <div className="py-16 px-6 text-center ">
-        <div className="grid md:grid-cols-2 gap-6 ">
-          {/* card */}
-          <div className="p-5 ">
-            <a href="https://www.discord.gg/36JGRMS9ne">
-              <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-black">
-                IntruderSec Academy
-              </h5>
-            </a>
-            <p className="mb-3 mt-7 text-2xl font-normal text-gray-700 dark:text-gray-700">
-              Is an Indian-based cybersecurity training platform founded in
-              2024, focused on ethical hacking, penetration testing, and digital
-              forensics. <br /> Headquartered in Delhi, it offers expert-led,
-              hands-on courses for learners passionate about cybersecurity. And
-              empowering individuals to safeguard digital assets and counter
-              cyber threats effectively.
-            </p>
-
-            <p>
-              <i>
-                {" "}
-                <strong>-Vivek Poswal</strong> <br />
-                Founder & Ethical Hacking Specialist
-              </i>
-            </p>
+      
+      {/* <section className="bg-[#0A1D4A]">
+        <div className=" p-10 flex   justify-center flex-wrap gap-10 opacity-80">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+              alt="Microsoft"
+              className="h-6"
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+              alt="Google"
+              className="h-6"
+            />
+            <img
+              src="https://www.sydney.edu.au/etc/designs/corporate-commons/images/svg/logo.svg"
+              alt="Sydney"
+              className="h-6"
+            />
+            <img
+              src="https://www.ncl.ac.uk/assets/NCL/images/svg/NCL_logo_colour.svg"
+              alt="Newcastle"
+              className="h-6"
+            />
+            <img
+              src="https://www.bristol.ac.uk/media-library/sites/bristol/images/brand-assets/crest-logo-black.svg"
+              alt="Bristol"
+              className="h-8"
+            />
           </div>
-
-          <div className="flex items-baseline justify-center">
-            <img className="rounded-t-lg w-120 h-110 " src={asset} alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className="py-16 px-6 text-center">
-        {/* Text Section */}
-        <div className="md:col-span-2">
-          <div className="p-5">
-            <a href="https://www.discord.gg/36JGRMS9ne">
-              <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-black uppercase">
-                Certification
-              </h5>
-            </a>
-            <p className="text-lg md:text-2xl text-gray-700 dark:text-gray-700">
-            When you successfully finish the program, IntruSec Academy will award you a Certified certificate.
-            </p>
-          </div>
-        </div>
-
-        {/* Image Section */}
-        <div className="md:col-span-3 flex items-center justify-center mt-5">
-          <img
-            src={asset1}
-            alt="IntruderSec"
-            className="w-full max-w-md md:max-w-lg h-auto border border-blue-900 shadow-2xl shadow-gray-500 hover:shadow-blue-600 transition duration-500 ease-in-out transform hover:scale-90 rounded-2xl"
-          />
-        </div>
-      </div>
-
+      </section> */}
+      <About />
       <Courses />
+      <Contact />
     </>
   );
 };

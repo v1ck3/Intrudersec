@@ -6,37 +6,49 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full bg-blue-600 text-amber-50">
-      <div className="flex justify-between items-center p-6">
-        <h1 className="text-2xl font-semibold">IntruderSec Academy</h1>
+    <header className="w-full py-6 bg-[#0A1D4A] text-white">
+      <div className="container mx-auto max-w-7xl px-6 flex justify-between items-center relative">
 
-        {/* Hamburger Menu (mobile) */}
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
-            {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
-          </button>
-        </div>
+        {/* Logo */}
+        <h1 className="text-2xl font-bold">IntruderSec Academy</h1>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-6 font-semibold">
-          <Link to="/" className="hover:text-blue-100 transition delay-10 duration-300 ease-in-out hover:-translate-z-1 hover:scale-110">Home</Link>
-          <Link to="/courses" className="hover:text-blue-100 transition delay-10 duration-300 ease-in-out hover:-translate-z-1 hover:scale-110">Courses</Link>
-          <Link to="/about" className="hover:text-blue-100 transition delay-10 duration-300 ease-in-out hover:-translate-z-1 hover:scale-110">About</Link>
-          <Link to="/resources" className="hover:text-blue-100 transition delay-10 duration-300 ease-in-out hover:-translate-z-1 hover:scale-110">Resources</Link>
-          <Link to="/contact" className="hover:text-blue-100 transition delay-10 duration-300 ease-in-out hover:-translate-z-1 hover:scale-110">Contact</Link>
-          <Link to="/news" className="hover:text-blue-100 transition delay-10 duration-300 ease-in-out hover:-translate-z-1 hover:scale-110">News</Link>
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex space-x-8 text-sm font-medium">
+          <Link to="/" className="hover:text-gray-300 transition">Home</Link>
+          <Link to="/courses" className="hover:text-gray-300 transition">Courses</Link>
+          <Link to="/about" className="hover:text-gray-300 transition">About</Link>
+          <Link to="/resources" className="hover:text-gray-300 transition">Resources</Link>
+          <Link to="/contact" className="hover:text-gray-300 transition">Contact</Link>
+          <Link to="/news" className="hover:text-gray-300 transition">News</Link>
         </nav>
+
+        {/* Login Button */}
+        <button className="hidden md:block bg-white/20 px-6 py-2 rounded-full hover:bg-white/30 transition">
+          Login
+        </button>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
+        </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <nav className="flex flex-col items-center gap-4 pb-4 md:hidden font-semibold text-lg">
-          <Link to="/" onClick={() => setIsOpen(false)} className="hover:text-blue-100">Home</Link>
-          <Link to="/courses" onClick={() => setIsOpen(false)} className="hover:text-blue-100">Courses</Link>
-          <Link to="/about" onClick={() => setIsOpen(false)} className="hover:text-blue-100">About</Link>
-          <Link to="/resources" onClick={() => setIsOpen(false)} className="hover:text-blue-100">Resources</Link>
-          <Link to="/contact" onClick={() => setIsOpen(false)} className="hover:text-blue-100">Contact</Link>
-          <Link to="/news" onClick={() => setIsOpen(false)} className="hover:text-blue-100">News</Link>
+        <nav className="md:hidden bg-[#0A1D4A]/95 text-white flex flex-col items-center gap-5 py-6 text-lg font-medium">
+          <Link to="/" onClick={() => setIsOpen(false)} className="hover:text-gray-300">Home</Link>
+          <Link to="/courses" onClick={() => setIsOpen(false)} className="hover:text-gray-300">Courses</Link>
+          <Link to="/about" onClick={() => setIsOpen(false)} className="hover:text-gray-300">About</Link>
+          <Link to="/resources" onClick={() => setIsOpen(false)} className="hover:text-gray-300">Resources</Link>
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="hover:text-gray-300">Contact</Link>
+          <Link to="/news" onClick={() => setIsOpen(false)} className="hover:text-gray-300">News</Link>
+
+          <button className="mt-2 bg-white/20 px-6 py-2 rounded-full hover:bg-white/30 transition">
+            Login
+          </button>
         </nav>
       )}
     </header>
@@ -44,4 +56,3 @@ const Header = () => {
 };
 
 export default Header;
-

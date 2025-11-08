@@ -4,146 +4,84 @@ import asset1 from "../assets/P1.png";
 import asset2 from "../assets/N1.png";
 import asset3 from "../assets/M1.png";
 
+const courses = [
+  {
+    title: "Intruder Security Fundamentals",
+    desc: "Learn the fundamentals of ethical hacking, cybersecurity tools, and penetration testing techniques.",
+    img: asset,
+  },
+  {
+    title: "Certified Pentesting Professional",
+    desc: "Master the art of penetration testing with real-world scenarios.",
+    img: asset1,
+  },
+  {
+    title: "Certified Mobile App Intruder",
+    desc: "Understand how mobile applications work and learn bug hunting using mobiles.",
+    img: asset2,
+  },
+  {
+    title: "IntruderSec Network Security Expert",
+    desc: "Explore network security techniques to protect against cyber threats.",
+    img: asset3,
+  },
+];
+
 const Courses = () => {
   return (
-    <>
-      {/* Courses Section */}
-      <div className="py-16 px-6 text-center ">
-        <h2 className="text-3xl font-bold mb-6 uppercase">Our Courses</h2>
-        <div className="grid md:grid-cols-3 gap-6 ">
-          {/* card */}
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-100 dark:border-gray-100">
-            <a href="https://www.discord.gg/36JGRMS9ne">
-              <img className="rounded-t-lg" src={asset} alt="" />
-            </a>
-            <div className="p-5">
-              <a href="https://www.discord.gg/36JGRMS9ne">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
-                  Intruder Security Fundamentals
-                </h5>
-              </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-700">
-                Learn the fundamentals of ethical hacking, cybersecurity tools,
-                and penetration testing techniques.
-              </p>
-              <a
-                target="_blank"
-                href="https://www.discord.gg/36JGRMS9ne"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Join Now
-              </a>
+    <section className=" bg-[#0A1D4A] py-20 px-6 max-w-8xl">
+      {/* Title */}
+      <h2 className="text-center text-4xl text-white font-extrabold tracking-tight mb-14" data-aos="fade-up">
+        <span className="text-blue-700">Our</span> Courses
+      </h2>
 
-              <a
-                target="_blank"
-                href="https://chat.whatsapp.com/GHnvsHZDrTa85DcIdUx64g"
-                className="inline-flex items-center px-3 ml-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Connect on WhatsApp
-              </a>
+      {/* Cards Grid */}
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4" data-aos="zoom-in" data-aos-delay="100">
+        {courses.map((course, index) => (
+          <div
+            key={index}
+            className="group bg-white/80 backdrop-blur shadow-md hover:shadow-2xl rounded-2xl overflow-hidden border border-gray-200 transition-all duration-300 hover:-translate-y-3"
+          >
+            {/* Image Wrapper */}
+            <div className="overflow-hidden h-56">
+              <img
+                src={course.img}
+                alt={course.title}
+                className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+
+            {/* Text Content */}
+            <div className="p-6 text-center">
+              <h3 className="text-lg font-bold mb-2 group-hover:text-blue-700 transition-colors">
+                {course.title}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                {course.desc}
+              </p>
+
+              {/* Buttons */}
+              <div className="flex justify-center gap-3">
+                <a
+                  href="https://discord.com/invite/36JGRMS9ne"
+                  className="px-4 py-2 text-sm rounded-full bg-[#F4FF2D]  text-black hover:bg-blue-700 transition"
+                >
+                  Join Now
+                </a>
+
+                <a
+                  href="https://wa.me/919871307390"
+                  target="_blank"
+                  className="px-4 py-2 text-sm rounded-full bg-green-500 text-white hover:bg-green-600 transition"
+                >
+                  WhatsApp
+                </a>
+              </div>
             </div>
           </div>
-
-          {/* card */}
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-100 dark:border-gray-100">
-            <a href="https://www.discord.gg/36JGRMS9ne">
-              <img className="rounded-t-lg" src={asset1} alt="" />
-            </a>
-            <div className="p-5">
-              <a href="https://www.discord.gg/36JGRMS9ne">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
-                  Certified Pentesting Professional
-                </h5>
-              </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-700">
-                Master the art of penetration testing with real-world scenarios.
-              </p>
-              <a
-                target="_blank"
-                href="https://www.discord.gg/36JGRMS9ne"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Join Now
-              </a>
-
-              <a
-                target="_blank"
-                href="https://chat.whatsapp.com/GHnvsHZDrTa85DcIdUx64g"
-                className="inline-flex items-center px-3 ml-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Connect on WhatsApp
-              </a>
-            </div>
-          </div>
-
-          {/* card */}
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-100 dark:border-gray-100">
-            <a href="https://www.discord.gg/36JGRMS9ne">
-              <img className="rounded-t-lg" src={asset3} alt="" />
-            </a>
-            <div className="p-5">
-              <a href="https://www.discord.gg/36JGRMS9ne">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
-                  Certified Mobile App Intruder
-                </h5>
-              </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-700">
-                Understand the mobile application works and bug hunting using
-                mobiles.
-              </p>
-              <a
-                target="_blank"
-                href="https://www.discord.gg/36JGRMS9ne"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Join Now
-              </a>
-
-              <a
-                target="_blank"
-                href="https://chat.whatsapp.com/GHnvsHZDrTa85DcIdUx64g"
-                className="inline-flex items-center px-3 ml-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Connect on WhatsApp
-              </a>
-            </div>
-          </div>
-
-          {/* card */}
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-100 dark:border-gray-100">
-            <a href="https://www.discord.gg/36JGRMS9ne">
-              <img className="rounded-t-lg" src={asset2} alt="" />
-            </a>
-            <div className="p-5">
-              <a href="https://www.discord.gg/36JGRMS9ne">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
-                  IntruderSec Network Security Expert
-                </h5>
-              </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-700">
-                Explore network security techniques to protect against cyber
-                threats.
-              </p>
-              <a
-                target="_blank"
-                href="https://www.discord.gg/36JGRMS9ne"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Join Now
-              </a>
-
-              <a
-                target="_blank"
-                href="https://chat.whatsapp.com/GHnvsHZDrTa85DcIdUx64g"
-                className="inline-flex items-center px-3 ml-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Connect on WhatsApp
-              </a>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
-    </>
+    </section>
   );
 };
 
