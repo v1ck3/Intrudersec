@@ -5,7 +5,7 @@ import { FaYoutube, FaLinkedin, FaTwitter, FaDiscord, FaWhatsapp } from "react-i
 const Footer = () => {
   return (
     <>
-      <footer className="bg-blue-600 text-white py-6 ">
+      <footer className="bg-[#0A1D4A] text-white py-6 ">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           {/* Left: Copyright */}
           <div className="text-center md:text-left text-sm">

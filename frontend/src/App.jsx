@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Routes , Route} from "react-router-dom"
 import Home from './pages/Home'
 import Photo from './pages/Photo'
@@ -10,6 +10,8 @@ import Courses from './pages/Courses'
 import Footer from './components/Footer'
 import News from './pages/News'
 import "./App.css"
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 
@@ -19,6 +21,15 @@ import "./App.css"
 
 
 const App = () => {
+
+   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
+
   return (
    <>
    <Header/>
