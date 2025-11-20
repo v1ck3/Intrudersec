@@ -24,7 +24,7 @@ app.post("/send-mail", async (req, res) => {
       service: "gmail", // Or "smtp-mail.outlook.com"
       auth: {
         user: "intrudersecacademy@gmail.com",
-        pass: "wmbi vfkg xupf qekl", // NOT your Gmail password
+        pass: process.env.Gmailid, // NOT your Gmail password
       },
     });
 

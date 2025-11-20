@@ -26,7 +26,7 @@ const Home = () => {
               courses designed for modern minds.
             </p>
 
-            <Link to="/Contact" className="mt-7 bg-[#F4FF2D] hover:bg-lime-300 text-black font-semibold px-8 py-3 rounded-full inline-flex items-center gap-2 transition hover:scale-105">
+            <Link to="/courses" className="mt-7 bg-[#F4FF2D] hover:bg-lime-300 text-black font-semibold px-8 py-3 rounded-full inline-flex items-center gap-2 transition hover:scale-105">
               Enroll Our Course Now <ArrowRight size={20} />
             </Link>
           </div>
