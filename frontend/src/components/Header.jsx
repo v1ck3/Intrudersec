@@ -23,9 +23,9 @@ const Header = () => {
         </nav>
 
         {/* Login Button */}
-        <button className="hidden md:block bg-white/20 px-6 py-2 rounded-full hover:bg-white/30 transition">
+        {/* <button className="hidden md:block bg-white/20 px-6 py-2 rounded-full hover:bg-white/30 transition">
           Login
-        </button>
+        </button> */}
 
         {/* Mobile Menu Button */}
         <button
