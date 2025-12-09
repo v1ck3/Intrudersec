@@ -39,9 +39,9 @@ const resources = [
 
 const labs = [
   {
-    title: "RSXX",
+    title: "RXSS",
     desc: "Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way.",
-    link: "https://reflected-xss.glitch.me/",
+    link: "https://intrudersecacademy.github.io/challenges/rxss.html",
   },
   
 ];
