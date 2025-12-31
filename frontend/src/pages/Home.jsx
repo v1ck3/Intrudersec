@@ -14,7 +14,7 @@ const Home = () => {
           {/* Hero Text */}
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-xs bg-white/20 px-3 py-1 rounded-full uppercase tracking-wide">
-              #1 E-learning Platform 2025
+              #1 E-learning Platform 2026
             </span>
 
             <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-6">
@@ -44,10 +44,10 @@ const Home = () => {
         </div>
       </section>
       <section>
-        <div className="bg-[#0A1D4A] w-full ">
+        <div className="bg-[#162B6F] backdrop-blur-md max-w-7xl mx-auto  rounded-xl border border-blue-300/20 mt- -20 mb-16 py-6">
           <div className="flex justify-between text-sm text-white max-w-5xl mx-auto px-6 py-4">
             <p data-aos="fade-left">
-              <strong className="flex text-white text-4xl">5000+ </strong> Top Notch
+              <strong className="flex text-white text-7xl">5000+ </strong> Top Notch
               Courses
             </p>
 
@@ -57,7 +57,7 @@ const Home = () => {
                 "Modern, sleek, and focused on real skills. I loved the hands-on
                 projects and their system."
               </p>
-              <p className="mt-1 text-gray-800">— Jason Kim, UX Designer</p>
+              <p className="mt-1 text-gray-200">— Jason Kim, UX Designer</p>
             </div>
           </div>
 

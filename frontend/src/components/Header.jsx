@@ -11,97 +11,97 @@ const Header = () => {
 
   const token = localStorage.getItem("token");
 
-  // Close auth modal when user logs in
   useEffect(() => {
-    if (token) {
-      setOpenAuth(false);
-    }
+    if (token) setOpenAuth(false);
   }, [token]);
 
   return (
-    <header className="w-full py-6 bg-[#0A1D4A] text-white relative">
-      <div className="container mx-auto max-w-7xl px-6 flex justify-between items-center">
+    <header className="sticky top-2 sm:top-4 z-50">
+      {/* Floating Container */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-4">
+        <div className="bg-[#162B6F]/60 backdrop-blur-md text-white py-3 sm:py-4 px-4 sm:px-6 rounded-xl sm:rounded-full shadow-lg border border-white/10">
 
-        {/* Logo */}
-        <h1 className="text-2xl font-bold">IntruderSec Academy</h1>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
-          <Link to="/" className="hover:text-gray-300">Home</Link>
-          <Link to="/courses" className="hover:text-gray-300">Courses</Link>
-          <Link to="/about" className="hover:text-gray-300">About</Link>
-          <Link to="/resources" className="hover:text-gray-300">Resources</Link>
-          <Link to="/contact" className="hover:text-gray-300">Contact</Link>
-
-          {token ? (
-            <button
-              onClick={() => setOpenProfile(true)}
-              className="bg-white/20 px-6 py-2 rounded-full hover:bg-white/30 transition"
+          <div className="flex justify-between items-center">
+            {/* Logo */}
+            <Link
+              to="/"
+              className="text-base sm:text-lg md:text-xl font-bold truncate max-w-[180px] sm:max-w-none"
             >
-              Profile
-            </button>
-          ) : (
+              IntruderSec Academy
+            </Link>
+
+            {/* Desktop Nav */}
+            <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium">
+              <Link to="/" className="hover:text-gray-300">Home</Link>
+              <Link to="/courses" className="hover:text-gray-300">Courses</Link>
+              <Link to="/about" className="hover:text-gray-300">About</Link>
+              <Link to="/resources" className="hover:text-gray-300">Resources</Link>
+              <Link to="/contact" className="hover:text-gray-300">Contact</Link>
+
+              {token ? (
+                <button
+                  onClick={() => setOpenProfile(true)}
+                  className="bg-white/20 px-5 py-2 rounded-full hover:bg-white/30 transition"
+                >
+                  Profile
+                </button>
+              ) : (
+                <button
+                  onClick={() => setOpenAuth(true)}
+                  className="bg-white/20 px-5 py-2 rounded-full hover:bg-white/30 transition"
+                >
+                  Login / Signup
+                </button>
+              )}
+            </nav>
+
+            {/* Mobile Toggle */}
             <button
-              onClick={() => setOpenAuth(true)}
-              className="bg-white/20 px-6 py-2 rounded-full hover:bg-white/30 transition"
+              className="lg:hidden p-2 rounded-md hover:bg-white/10 transition"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              Login / Signup
+              {isOpen ? <HiX size={24} /> : <HiMenu size={24} />}
             </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {isOpen && (
+            <nav className="lg:hidden mt-4 flex flex-col items-center gap-4 text-sm font-medium pb-2">
+              <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
+              <Link to="/courses" onClick={() => setIsOpen(false)}>Courses</Link>
+              <Link to="/about" onClick={() => setIsOpen(false)}>About</Link>
+              <Link to="/resources" onClick={() => setIsOpen(false)}>Resources</Link>
+              <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
+
+              {token ? (
+                <button
+                  onClick={() => {
+                    setOpenProfile(true);
+                    setIsOpen(false);
+                  }}
+                  className="bg-white/20 px-6 py-2 rounded-full w-full text-center"
+                >
+                  Profile
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setOpenAuth(true);
+                    setIsOpen(false);
+                  }}
+                  className="bg-white/20 px-6 py-2 rounded-full w-full text-center"
+                >
+                  Login / Signup
+                </button>
+              )}
+            </nav>
           )}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
-        </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <nav className="md:hidden bg-[#0A1D4A]/95 flex flex-col items-center gap-5 py-6 text-lg font-medium">
-          <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link to="/courses" onClick={() => setIsOpen(false)}>Courses</Link>
-          <Link to="/about" onClick={() => setIsOpen(false)}>About</Link>
-          <Link to="/resources" onClick={() => setIsOpen(false)}>Resources</Link>
-          <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
-
-          {token ? (
-            <button
-              onClick={() => {
-                setOpenProfile(true);
-                setIsOpen(false);
-              }}
-              className="bg-white/20 px-6 py-2 rounded-full hover:bg-white/30 transition"
-            >
-              Profile
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                setOpenAuth(true);
-                setIsOpen(false);
-              }}
-              className="bg-white/20 px-6 py-2 rounded-full hover:bg-white/30 transition"
-            >
-              Login / Signup
-            </button>
-          )}
-        </nav>
-      )}
-
       {/* Modals */}
-      <UserAuth
-        isOpen={openAuth}
-        onClose={() => setOpenAuth(false)}
-      />
-
-      <ProfileSidebar
-        isOpen={openProfile}
-        onClose={() => setOpenProfile(false)}
-      />
+      <UserAuth isOpen={openAuth} onClose={() => setOpenAuth(false)} />
+      <ProfileSidebar isOpen={openProfile} onClose={() => setOpenProfile(false)} />
     </header>
   );
 };
