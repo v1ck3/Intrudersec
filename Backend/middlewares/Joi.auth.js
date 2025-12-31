@@ -26,9 +26,6 @@ if (error) {
    next()
 }
 
-
-
-
 export default {
     handleSignupAuth,
     handleloginAuth

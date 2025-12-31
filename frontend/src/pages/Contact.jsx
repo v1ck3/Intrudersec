@@ -8,7 +8,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:8520/send-mail", {
+    const res = await fetch("http://localhost:8520/api/v1/send-mail", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -72,7 +72,7 @@ const Contact = () => {
               Call Now
             </a>
             <a
-              href="https://wa.me/919871307390"
+              href="https://chat.whatsapp.com/CG20L0M8TBtDppqCetHQ0J"
               target="_blank"
               className="bg-green-600 text-white px-5 py-2 rounded-full hover:bg-green-700 transition flex items-center gap-2"
             >

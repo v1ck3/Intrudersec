@@ -33,6 +33,7 @@ const handleuser = async (req, res) => {
 const handlelogin = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password);
 
     const User = await user.findOne({ email });
     if (!User) {

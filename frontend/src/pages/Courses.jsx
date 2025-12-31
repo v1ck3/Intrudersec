@@ -31,7 +31,7 @@ const Courses = () => {
   return (
     <section className=" bg-[#0A1D4A] py-20 px-6 max-w-8xl">
       {/* Title */}
-      <h2 className="text-center text-4xl text-white font-extrabold tracking-tight mb-14" data-aos="fade-up">
+      <h2 className="text-center text-8xl text-white/50 font-extrabold tracking-tight mb-14" >
         <span className="text-blue-700">Our</span> Courses
       </h2>
 
@@ -70,7 +70,7 @@ const Courses = () => {
                 </a>
 
                 <a
-                  href="https://wa.me/919871307390"
+                  href="https://chat.whatsapp.com/CG20L0M8TBtDppqCetHQ0J"
                   target="_blank"
                   className="px-4 py-2 text-sm rounded-full bg-green-500 text-white hover:bg-green-600 transition"
                 >

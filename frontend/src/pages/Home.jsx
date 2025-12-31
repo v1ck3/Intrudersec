@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <section className="bg-[#0A1D4A] text-white pt-10  relative overflow-hidden" >
+      <section className="bg-white text-black pt-10  relative overflow-hidden" >
         <div className="container mx-auto max-w-7xl px-6 lg:px-10 relative z-10" data-aos="fade-in">
           {/* Hero Text */}
           <div className="text-center max-w-3xl mx-auto">
@@ -21,7 +21,7 @@ const Home = () => {
               Launch Career with <br /> Ready Online Courses
             </h2>
 
-            <p className="text-gray-300 mt-5">
+            <p className="text-gray-600 mt-5">
               Join thousands of learners worldwide accessing cutting-edge
               courses designed for modern minds.
             </p>
@@ -44,10 +44,10 @@ const Home = () => {
         </div>
       </section>
       <section>
-        <div className="bg-white w-full ">
-          <div className="flex justify-between text-sm text-black max-w-5xl mx-auto px-6 py-4">
+        <div className="bg-[#0A1D4A] w-full ">
+          <div className="flex justify-between text-sm text-white max-w-5xl mx-auto px-6 py-4">
             <p data-aos="fade-left">
-              <strong className="flex text-black text-4xl">5000+ </strong> Top Notch
+              <strong className="flex text-white text-4xl">5000+ </strong> Top Notch
               Courses
             </p>
 
@@ -67,35 +67,7 @@ const Home = () => {
       </section>
 
       
-      {/* <section className="bg-[#0A1D4A]">
-        <div className=" p-10 flex   justify-center flex-wrap gap-10 opacity-80">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
-              alt="Microsoft"
-              className="h-6"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-              alt="Google"
-              className="h-6"
-            />
-            <img
-              src="https://www.sydney.edu.au/etc/designs/corporate-commons/images/svg/logo.svg"
-              alt="Sydney"
-              className="h-6"
-            />
-            <img
-              src="https://www.ncl.ac.uk/assets/NCL/images/svg/NCL_logo_colour.svg"
-              alt="Newcastle"
-              className="h-6"
-            />
-            <img
-              src="https://www.bristol.ac.uk/media-library/sites/bristol/images/brand-assets/crest-logo-black.svg"
-              alt="Bristol"
-              className="h-8"
-            />
-          </div>
-      </section> */}
+      
       <About />
       <Courses />
       <Contact />

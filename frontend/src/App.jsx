@@ -8,10 +8,12 @@ import Contact from './pages/Contact'
 import Resources from './pages/Resources'
 import Courses from './pages/Courses'
 import Footer from './components/Footer'
-import News from './pages/News'
+import { Toaster } from "react-hot-toast";
+
 import "./App.css"
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Profile from './components/Profile'
 
 const App = () => {
 
@@ -25,6 +27,7 @@ const App = () => {
 
   return (
    <>
+   <Toaster position="top-center" />
    <Header/>
    <Routes>
       <Route path='/' element={<Home/>} />
@@ -32,7 +35,8 @@ const App = () => {
       <Route path='/about' element={<About/>}/>
       <Route path='/resources' element={<Resources/>}/>
       <Route path='/contact' element={<Contact/>}/>
-      <Route path='/news' element={<News/>}/>
+      <Route path='/Profile' element={<Profile/>}/>
+      
    </Routes>
    
    <Footer/>
