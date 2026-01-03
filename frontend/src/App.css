@@ -2,10 +2,7 @@
     scroll-behavior: smooth;
     
 }
-#root{
-    height: 100%;
-    margin: auto;
-}
+
 
 ::-webkit-scrollbar{
     width: 10px;

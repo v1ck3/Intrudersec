@@ -3,27 +3,27 @@ import React from "react";
 const blogs = [
   {
     title: "Offensive Pentesting",
-    desc: "Introduction to Offensive Penetration Testing. Offensive Security focuses on finding weaknesses and exploiting them…..",
+    desc: "Introduction to Offensive Penetration Testing. Learn how attackers think and exploit weaknesses.",
     link: "https://offensivepentestings.blogspot.com/",
   },
   {
     title: "Defensive Operations",
-    desc: "Introduction to Defensive Security. As cyber threats evolve, organizations must defend their systems…..",
+    desc: "Understand defensive security strategies to protect systems against evolving threats.",
     link: "https://learndefensive.blogspot.com/",
   },
   {
     title: "Network Security",
-    desc: "Introduction to Network Security for Beginners. Learn how networks are protected…..",
+    desc: "Beginner-friendly guide to securing networks and preventing attacks.",
     link: "https://linuxbyisa.blogspot.com/",
   },
   {
     title: "Linux F&S",
-    desc: "Linux Fundamentals and Security for beginners. Linux is a powerful open-source OS…..",
+    desc: "Linux fundamentals and security essentials for beginners.",
     link: "https://linuxbyisa.blogspot.com/",
   },
   {
     title: "Bug Bounty Techniques",
-    desc: "Bug Bounty for beginners. Learn how to report security vulnerabilities and earn rewards…..",
+    desc: "Learn how to find and responsibly report vulnerabilities for rewards.",
     link: "https://bugbountysociety.blogspot.com/",
   },
 ];
@@ -31,119 +31,86 @@ const blogs = [
 const resources = [
   {
     title: "Cybersecurity Educational Resources",
-    desc: "This is an awesome list of resources related to teaching cybersecurity,.....",
+    desc: "A curated list of high-quality cybersecurity learning materials.",
     link: "https://github.com/CSIRT-MU/edu-resources?tab=readme-ov-file",
   },
-  
 ];
 
 const labs = [
   {
-    title: "RXSS",
-    desc: "Reflected cross-site scripting (or XSS) arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way.",
+    title: "RXSS Lab",
+    desc: "Hands-on lab to understand reflected cross-site scripting vulnerabilities.",
     link: "https://intrudersecacademy.github.io/challenges/rxss.html",
   },
-  
 ];
+
+/* Reusable Card Component */
+const Card = ({ title, desc, link, buttonText }) => (
+  <div className="group relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-7 text-center
+                  shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-blue-500/30">
+
+    {/* Glow Effect */}
+    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100
+                    bg-gradient-to-r from-blue-500/20 to-cyan-400/20 blur-xl transition" />
+
+    <h3 className="relative text-xl font-bold text-white mb-3">
+      {title}
+    </h3>
+
+    <p className="relative text-gray-300 text-sm leading-relaxed mb-6">
+      {desc}
+    </p>
+
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="relative inline-flex items-center justify-center px-6 py-2.5
+                 text-sm font-semibold text-black rounded-full
+                 bg-[#F4FF2D] hover:bg-cyan-400 transition"
+    >
+      {buttonText}
+    </a>
+  </div>
+);
+
+/* Section Wrapper */
+const Section = ({ title, children }) => (
+  <section className="bg-[#0A1D4A] py-24 px-6">
+    <div className="max-w-7xl mx-auto">
+      <h2 className="text-center text-white text-4xl font-extrabold tracking-tight mb-16">
+        {title}
+      </h2>
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        {children}
+      </div>
+    </div>
+  </section>
+);
 
 const Resources = () => {
   return (
     <>
-    <section className=" bg-[#0A1D4A] py-20 px-6 max-w-8xl mx-auto">
-      {/* Title */}
-      <h2 className="text-center text-white text-4xl font-extrabold tracking-tight mb-14" data-aos="fade-in">
-         Resources
-      </h2>
-
-      {/* Cards Grid */}
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 animate-fadeIn" data-aos="zoom-in">
-        {resources.map((resources, index) => (
-          <div
-            key={index}
-            className="group bg-white/80 backdrop-blur-sm border border-gray-200 shadow-md hover:shadow-xl rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2"
-          >
-            <h3 className="text-xl font-bold mb-3 group-hover:text-blue-700 transition-colors">
-              {resources.title}
-            </h3>
-
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              {resources.desc}
-            </p>
-
-            <a
-              href={resources.link}
-              className="inline-block px-5 py-2 text-sm font-medium  text-black rounded-full bg-[#F4FF2D] hover:bg-blue-700 transition shadow-sm"
-            >
-              View Blog
-            </a>
-          </div>
+      {/* Resources */}
+      <Section title="Resources">
+        {resources.map((item, i) => (
+          <Card key={i} {...item} buttonText="Explore" />
         ))}
-      </div>
-    </section>
+      </Section>
 
-    <section className=" bg-[#0A1D4A] py-20 px-6 max-w-8xl mx-auto">
-      {/* Title */}
-      <h2 className="text-center text-white text-4xl font-extrabold tracking-tight mb-14"  data-aos="fade-in">
-         LABS
-      </h2>
-
-      {/* Cards Grid */}
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 animate-fadeIn" data-aos="zoom-in">
-        {labs.map((labs, index) => (
-          <div
-            key={index}
-            className="group bg-white/80 backdrop-blur-sm border border-gray-200 shadow-md hover:shadow-xl rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2"
-          >
-            <h3 className="text-xl font-bold mb-3 group-hover:text-blue-700 transition-colors">
-              {labs.title}
-            </h3>
-
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              {labs.desc}
-            </p>
-
-            <a
-              href={labs.link}
-              className="inline-block px-5 py-2 text-sm font-medium  text-black rounded-full bg-[#F4FF2D] hover:bg-blue-700 transition shadow-sm"
-            >
-              View Blog
-            </a>
-          </div>
+      {/* Labs */}
+      <Section title="Labs">
+        {labs.map((item, i) => (
+          <Card key={i} {...item} buttonText="Start Lab" />
         ))}
-      </div>
-    </section>
-    
-    <section className=" bg-[#0A1D4A] py-20 px-6 max-w-8xl mx-auto">
-      {/* Title */}
-      <h2 className="text-center text-4xl font-extrabold tracking-tight mb-14"  data-aos="fade-in">
-        <span className="text-white">Blogs</span>
-      </h2>
+      </Section>
 
-      {/* Cards Grid */}
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 animate-fadeIn" data-aos="zoom-in">
-        {blogs.map((blog, index) => (
-          <div
-            key={index}
-            className="group bg-white/80 backdrop-blur-sm border border-gray-200 shadow-md hover:shadow-xl rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2"
-          >
-            <h3 className="text-xl font-bold mb-3 group-hover:text-blue-700 transition-colors">
-              {blog.title}
-            </h3>
-
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              {blog.desc}
-            </p>
-
-            <a
-              href={blog.link}
-              className="inline-block px-5 py-2 text-sm font-medium  text-black rounded-full bg-[#F4FF2D] hover:bg-blue-700 transition shadow-sm"
-            >
-              View Blog
-            </a>
-          </div>
+      {/* Blogs */}
+      <Section title="Blogs">
+        {blogs.map((item, i) => (
+          <Card key={i} {...item} buttonText="Read Blog" />
         ))}
-      </div>
-    </section>
+      </Section>
     </>
   );
 };

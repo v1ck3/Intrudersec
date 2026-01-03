@@ -14,6 +14,9 @@ import "./App.css"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Profile from './components/Profile'
+import ScrollToTop from './components/ScrollToTop'
+import AdminDashboard from './pages/AdminDashboard'
+import AdminRoute from './components/AdminRoute'
 
 const App = () => {
 
@@ -33,6 +36,7 @@ const App = () => {
    
    <Toaster position="top-center" />
    <Header/>
+   <ScrollToTop />
    <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/courses' element={<Courses/>}/>
@@ -40,6 +44,17 @@ const App = () => {
       <Route path='/resources' element={<Resources/>}/>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/Profile' element={<Profile/>}/>
+    
+      
+
+  <Route
+    path="/admin/dashboard"
+    element={
+      <AdminRoute>
+        <AdminDashboard />
+      </AdminRoute>
+    }
+  />
       
    </Routes>
    

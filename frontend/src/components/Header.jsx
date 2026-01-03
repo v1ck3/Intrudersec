@@ -16,10 +16,10 @@ const Header = () => {
   }, [token]);
 
   return (
-    <header className="sticky top-2 sm:top-4 z-50">
+    <header className="sticky top-0 z-50 w-full">
       {/* Floating Container */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-4">
-        <div className="bg-[#162B6F]/60 backdrop-blur-md text-white py-3 sm:py-4 px-4 sm:px-6 rounded-xl sm:rounded-full shadow-lg border border-white/10">
+      <div className="max-w-full ">
+        <div className="bg-[#162B6F] backdrop-blur-md text-white py-3 sm:py-4 px-4 sm:px-6  shadow-lg border border-white/10">
 
           <div className="flex justify-between items-center">
             {/* Logo */}

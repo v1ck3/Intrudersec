@@ -8,102 +8,124 @@ const UserAuth = ({ isOpen, onClose }) => {
     name: "",
     email: "",
     password: "",
+    role: "student", // default
   });
 
   if (!isOpen) return null;
 
-  // Handle input change
+  // ================= INPUT HANDLER =================
   const handleChange = (e) => {
-    setValues({
-      ...values,
+    setValues((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
-  // Register user
+  // ================= SIGNUP =================
   const userRegister = async (e) => {
     e.preventDefault();
 
     try {
       const res = await fetch("http://localhost:8520/api/v1/signup", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(values),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        toast.error(data.message || "Signup failed");
-        return;
+        return toast.error(data.message || "Signup failed");
       }
 
-      toast.success("Signup successful 🎉");
+      toast.success("Signup successful 🎉 Please login");
+
       setIsLogin(true);
-      setValues({ name: "", email: "", password: "" });
-    } catch {
-      toast.error("Server error");
-    }
-  };
-
-  // Login user
-  const userLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      const res = await fetch("http://localhost:8520/api/v1/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: values.email,
-          password: values.password,
-        }),
+      setValues({
+        name: "",
+        email: "",
+        password: "",
+        role: "student",
       });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast.error(data.message || "Login failed");
-        return;
-      }
-
-      // ✅ STORE DATA ONLY ON SUCCESS
-      localStorage.setItem("token", data.jwttoken);
-      localStorage.setItem("userId", data._id);
-      localStorage.setItem("email", data.email);
-      localStorage.setItem("name", data.name);
-
-      toast.success("Login successful ");
-      setValues({ name: "", email: "", password: "" });
-      onClose();
-
-      // refresh header / auth state
-      window.location.reload();
     } catch {
       toast.error("Server error");
     }
   };
+
+  // ================= LOGIN =================
+  const userLogin = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:8520/api/v1/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: values.email,
+        password: values.password,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return toast.error(data.message || "Login failed");
+    }
+
+    // Store auth data
+    localStorage.setItem("token", data.jwttoken);
+    localStorage.setItem("userId", data._id);
+    localStorage.setItem("name", data.name);
+    localStorage.setItem("email", data.email);
+    localStorage.setItem("role", data.role);
+
+    toast.success("Login successful 🚀");
+
+    setValues({
+      name: "",
+      email: "",
+      password: "",
+      role: "student",
+    });
+
+    onClose();
+
+    // 🔐 ROLE-BASED REDIRECT
+    if (data.role === "admin") {
+      window.location.href = "/admin/dashboard";
+    } else {
+      window.location.href = "/";
+    }
+  } catch {
+    toast.error("Server error");
+  }
+};
+
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-      <div className="bg-white w-full max-w-md rounded-xl p-6 relative">
-        
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+      <div className="bg-white w-full max-w-md rounded-2xl p-6 relative shadow-xl">
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-xl text-gray-500"
+          className="absolute top-3 right-3 text-xl text-gray-500 hover:text-black"
         >
           ✕
         </button>
 
-        <h2 className="text-2xl font-bold text-center text-black mb-4">
-          {isLogin ? "Login" : "Create Account"}
+        {/* Title */}
+        <h2 className="text-2xl font-extrabold text-center text-black mb-6">
+          {isLogin ? "Login to Your Account" : "Create Account"}
         </h2>
 
+        {/* Form */}
         <form
           onSubmit={isLogin ? userLogin : userRegister}
           className="space-y-4"
         >
+          {/* Name */}
           {!isLogin && (
             <input
               type="text"
@@ -111,37 +133,71 @@ const UserAuth = ({ isOpen, onClose }) => {
               placeholder="Full Name"
               value={values.name}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-2 text-black"
+              required
+              className="w-full border rounded-lg px-4 py-2 text-black focus:ring-2 focus:ring-black outline-none"
             />
           )}
 
+          {/* Role Selection */}
+          {!isLogin && (
+            <div className="flex justify-center gap-6 text-black">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="role"
+                  value="student"
+                  checked={values.role === "student"}
+                  onChange={handleChange}
+                />
+                Student
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="role"
+                  value="admin"
+                  checked={values.role === "admin"}
+                  onChange={handleChange}
+                />
+                Admin
+              </label>
+            </div>
+          )}
+
+          {/* Email */}
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Email Address"
             value={values.email}
             onChange={handleChange}
-            className="w-full border rounded-lg px-4 py-2 text-black"
+            required
+            className="w-full border rounded-lg px-4 py-2 text-black focus:ring-2 focus:ring-black outline-none"
           />
 
+          {/* Password */}
           <input
             type="password"
             name="password"
             placeholder="Password"
             value={values.password}
             onChange={handleChange}
-            className="w-full border rounded-lg px-4 py-2 text-black"
+            required
+            className="w-full border rounded-lg px-4 py-2 text-black focus:ring-2 focus:ring-black outline-none"
           />
 
+          {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
+            className="w-full bg-black text-white py-2 rounded-lg font-semibold hover:bg-gray-900 transition"
           >
             {isLogin ? "Login" : "Sign Up"}
           </button>
         </form>
 
-        <p className="text-center text-sm text-black mt-4">
+        {/* Switch */}
+        <p className="text-center text-sm text-black mt-5">
           {isLogin ? "Don't have an account?" : "Already have an account?"}
           <button
             type="button"

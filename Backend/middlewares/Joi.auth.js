@@ -1,32 +1,31 @@
-import joi from "joi"
+import Joi from "joi";
 
-const handleSignupAuth = (req, res , next)=>{
-    const schema =joi.object({
-    name: joi.string().min(3).max(20).required(),
-    email: joi.string().email().required(),
-    password: joi.string().min(6).max(20).required()
-})
-const {error}= schema.validate(req.body);
-if (error) {
-    res.status(400).json({message:"Bad Request", error})   
-}
+const signupSchema = Joi.object({
+  name: Joi.string().min(3).required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(6).required(),
+  role: Joi.string().valid("student", "admin").optional()
+});
+
+const loginSchema = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().required()
+});
+
+const handleSignupAuth = (req, res, next) => {
+  const { error } = signupSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
   next();
-}
+};
 
+const handleloginAuth = (req, res, next) => {
+  const { error } = loginSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+  next();
+};
 
-const handleloginAuth = (req, res , next)=>{
-    const schema =joi.object({
-    email: joi.string().email().required(),
-    password: joi.string().min(6).max(20).required()
-})
-const {error}= schema.validate(req.body);
-if (error) {
-    res.status(400).json({message:"Bad Request", error})   
-}
-   next()
-}
-
-export default {
-    handleSignupAuth,
-    handleloginAuth
-}
+export default { handleSignupAuth, handleloginAuth };
