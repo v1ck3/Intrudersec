@@ -72,4 +72,14 @@ const handlelogin = async (req, res) => {
   }
 };
 
-export default { handleuser, handlelogin };
+
+const allUsers = async (req, res) => {
+  try {
+    const users = await User.find({}, { password: 0 });
+    res.json({ data: users });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch users", error: error.message });
+  }
+};
+
+export default { handleuser, handlelogin, allUsers };

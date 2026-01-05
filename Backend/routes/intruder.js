@@ -9,6 +9,7 @@ const router = express.Router()
 
 router.route("/signup").post( validation.handleSignupAuth,userauthentication.handleuser)
 router.route("/login").post(validation.handleloginAuth, userauthentication.handlelogin)
+
 router.route("/send-mail").post(sendMail.sendMail)
 
 

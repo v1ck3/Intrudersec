@@ -12,7 +12,18 @@ import connectDB from "./config/db.js";
 const app = express();
 
 connectDB();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", // frontend
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // ✔ allow DELETE
+    allowedHeaders: ["Content-Type", "Authorization", "x-admin-secret"], // ✔ include your custom header
+    credentials: true,
+  })
+);
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyparser.json());
