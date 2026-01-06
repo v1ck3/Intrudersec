@@ -1,26 +1,25 @@
-import React, { useEffect } from 'react'
-import {Routes , Route} from "react-router-dom"
-import Home from './pages/Home'
-import Photo from './pages/Photo'
-import Header from './components/Header'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Resources from './pages/Resources'
-import Courses from './pages/Courses'
-import Footer from './components/Footer'
+import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Photo from "./pages/Photo";
+import Header from "./components/Header";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Resources from "./pages/Resources";
+import Courses from "./pages/Courses";
+import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
 
-import "./App.css"
+import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Profile from './components/Profile'
-import ScrollToTop from './components/ScrollToTop'
-import AdminDashboard from './pages/AdminDashboard'
-import AdminRoute from './components/AdminRoute'
+import Profile from "./components/Profile";
+import ScrollToTop from "./components/ScrollToTop";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminRoute from "./components/AdminRoute";
 
 const App = () => {
-
-   useEffect(() => {
+  useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
@@ -29,39 +28,31 @@ const App = () => {
   }, []);
 
   return (
-   <>
+    <>
+      <Toaster position="top-center" />
+      <Header />
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/Profile" element={<Profile />} />
 
-   
+        <Route
+          path="/admin/dashboard"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+      </Routes>
 
-   
-   <Toaster position="top-center" />
-   <Header/>
-   <ScrollToTop />
-   <Routes>
-      <Route path='/' element={<Home/>} />
-      <Route path='/courses' element={<Courses/>}/>
-      <Route path='/about' element={<About/>}/>
-      <Route path='/resources' element={<Resources/>}/>
-      <Route path='/contact' element={<Contact/>}/>
-      <Route path='/Profile' element={<Profile/>}/>
-    
-      
+      <Footer />
+    </>
+  );
+};
 
-  <Route
-    path="/admin/dashboard"
-    element={
-      <AdminRoute>
-        <AdminDashboard />
-      </AdminRoute>
-    }
-  />
-      
-   </Routes>
-   
-   <Footer/>
-   
-   </>
-  )
-}
-
-export default App
+export default App;

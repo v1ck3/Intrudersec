@@ -15,7 +15,7 @@ const Courses = () => {
         const token = localStorage.getItem("token");
         const adminSecret = "adminsecret";
 
-        const res = await fetch("http://localhost:8520/api/admin/get-course", {
+        const res = await fetch(`${process.env.API_URI_ADMIN}/get-course`, {
           headers: {
             "Content-Type": "application/json",
           },
