@@ -26,7 +26,7 @@ const UserAuth = ({ isOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${process.env.API_URI}/signup`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URI}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const UserAuth = ({ isOpen, onClose }) => {
   e.preventDefault();
 
   try {
-    const res = await fetch(`${process.env.API_URI}/login`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URI}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

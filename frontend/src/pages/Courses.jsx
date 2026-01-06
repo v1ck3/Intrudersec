@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Courses = () => {
-  const [coursesCount, setCoursesCount] = useState(0);
+  
   const [coursesList, setCoursesList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -12,10 +12,7 @@ const Courses = () => {
         setLoading(true);
         setError("");
 
-        const token = localStorage.getItem("token");
-        const adminSecret = "adminsecret";
-
-        const res = await fetch(`${process.env.API_URI_ADMIN}/get-course`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URI_ADMIN}/get-course`, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -24,10 +21,8 @@ const Courses = () => {
         if (!res.ok) throw new Error("Courses API failed");
 
         const courses = await res.json();
-        setCoursesCount(Array.isArray(courses) ? courses.length : 0);
         setCoursesList(Array.isArray(courses) ? courses : []);
       } catch (err) {
-        console.error(err);
         setError("Failed to load courses");
       } finally {
         setLoading(false);

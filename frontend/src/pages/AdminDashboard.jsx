@@ -41,7 +41,7 @@ const AdminDashboard = () => {
         const token = localStorage.getItem("token");
         const adminSecret = "adminsecret";
 
-        const res = await fetch(`${process.env.API_URI_ADMIN}/get-course`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URI_ADMIN}/get-course`, {
           headers: {
             "Content-Type": "application/json",
             "x-admin-secret": adminSecret,
@@ -96,7 +96,7 @@ const AdminDashboard = () => {
         status: "published",
       };
 
-      const res = await fetch(`${process.env.API_URI_ADMIN}/create-course`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URI_ADMIN}/create-course`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
