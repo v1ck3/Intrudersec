@@ -43,7 +43,7 @@ const AdminDashboard = () => {
         const token = localStorage.getItem("token");
         const adminSecret = "adminsecret";
 
-        const res = await fetch("http://localhost:8520/api/admin/get-course", {
+        const res = await fetch(`${import.meta.env.VITE_API_URI}/get-course`, {
           headers: {
             "Content-Type": "application/json",
             "x-admin-secret": adminSecret,
