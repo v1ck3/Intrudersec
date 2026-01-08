@@ -27,14 +27,19 @@ export const getCourses = async (req, res) => {
 
 export const deleteCourse = async (req, res) => {
   try {
-    const { courseId } = req.body;
-    if (!courseId) return res.status(400).json({ message: "courseId required" });
+    const { courseId } = req.params;
+
+    console.log("BODY:", req.body);
+console.log("PARAMS:", req.params);
+    if (!courseId)
+      return res.status(400).json({ message: "courseId required" });
 
     const deleted = await Course.findByIdAndDelete(courseId);
-    if (!deleted) return res.status(404).json({ message: "Course not found" });
+    if (!deleted)
+      return res.status(404).json({ message: "Course not found" });
 
     res.status(200).json({ message: "Course deleted", course: deleted });
   } catch (err) {
     res.status(500).json({ message: "Delete error", error: err.message });
   }
-}; 
+};

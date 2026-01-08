@@ -15,7 +15,7 @@ router.get("/dashboard", protect, adminOnly, (req, res) => {
 });
 
 router.post("/create-course", protect, adminOnly, createCourse);
-router.delete("/delete-course/:id", protect, adminOnly, deleteCourse);
+router.delete("/delete-course/:courseId", protect, adminOnly, deleteCourse);
 router.get("/get-course", getCourses);
 router.get("/getuser", protect, adminOnly, userauthentication.allUsers);
 

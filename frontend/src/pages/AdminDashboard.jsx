@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaPlus } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 
 const AdminDashboard = () => {
   const [coursesCount, setCoursesCount] = useState(0);
   const [coursesList, setCoursesList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [deleteId, setDeleteId] = useState(null);
 
   const initialFormState = {
     courseId: "",
@@ -41,7 +43,7 @@ const AdminDashboard = () => {
         const token = localStorage.getItem("token");
         const adminSecret = "adminsecret";
 
-        const res = await fetch(`${import.meta.env.VITE_API_URI_ADMIN}/get-course`, {
+        const res = await fetch("http://localhost:8520/api/admin/get-course", {
           headers: {
             "Content-Type": "application/json",
             "x-admin-secret": adminSecret,
@@ -92,19 +94,24 @@ const AdminDashboard = () => {
           isOpen: form.isOpen === "true",
           maxStudents: form.maxStudents ? Number(form.maxStudents) : null,
         },
-        features: form.features ? form.features.split(",").map((f) => f.trim()) : [],
+        features: form.features
+          ? form.features.split(",").map((f) => f.trim())
+          : [],
         status: "published",
       };
 
-      const res = await fetch(`${import.meta.env.VITE_API_URI_ADMIN}/create-course`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-admin-secret": adminSecret,
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URI_ADMIN}/create-course`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-admin-secret": adminSecret,
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!res.ok) throw new Error("Failed to add course");
 
@@ -120,6 +127,45 @@ const AdminDashboard = () => {
     } catch (err) {
       console.error(err);
       toast.error("Course add failed!");
+    }
+  };
+  const deleteCourse = async (courseId) => {
+   
+    const confirmed = window.confirm(
+      "⚠️ Are you sure you want to delete this course?\nThis action cannot be undone."
+    );
+
+    if (!confirmed) return;
+
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URI_ADMIN}/delete-course/${courseId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.message || "Delete failed");
+        return;
+      }
+
+      setCoursesList((prev) =>
+        prev.filter((course) => course._id !== courseId)
+      );
+      setCoursesCount((prev) => prev - 1);
+
+      toast.success("Course deleted successfully");
+    } catch (error) {
+      console.error("Delete error:", error);
+      toast.error("Something went wrong");
     }
   };
 
@@ -149,7 +195,9 @@ const AdminDashboard = () => {
             </div>
 
             <div className="bg-gray-800 p-6 rounded-xl mt-12 mb-12 text-left">
-              <h2 className="text-2xl font-bold mb-4 flex gap-4 text-center"><FaPlus /> Add New Course</h2>
+              <h2 className="text-2xl font-bold mb-4 flex gap-4 text-center">
+                <FaPlus /> Add New Course
+              </h2>
 
               <form
                 onSubmit={handleSubmit}
@@ -272,20 +320,31 @@ const AdminDashboard = () => {
                   {coursesList.map((course) => (
                     <div
                       key={course._id}
-                      className="bg-gray-800 p-5 rounded-xl shadow-lg text-left"
+                      className="relative bg-gray-800 p-5 rounded-xl shadow-lg text-left"
                     >
+                      <button
+                        onClick={() => setDeleteId(course._id)}
+                        className="absolute top-3 right-3 text-white text-[15px] hover:text-red-400 transition hover:scale-105"
+                      >
+                        <ImCross />
+                      </button>
+
                       <h3 className="text-xl font-semibold">{course.title}</h3>
+
                       <p className="text-gray-400 text-sm mt-1">
                         {course.level} • {course.duration}
                       </p>
+
                       <p className="text-gray-300 mt-3 text-sm">
                         {course.description}
                       </p>
+
                       <p className="text-green-400 font-bold mt-4">
                         {course.isFree
                           ? "Free"
                           : `${course.price} ${course.currency}`}
                       </p>
+
                       <span className="text-yellow-300 text-xs mt-2 block">
                         ⭐ {course.rating}
                       </span>
@@ -297,6 +356,36 @@ const AdminDashboard = () => {
           </>
         )}
       </div>
+
+      {deleteId && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-gray-800 p-6 rounded-xl w-96 text-center">
+            <h3 className="text-xl font-bold mb-4">Confirm Delete</h3>
+            <p className="text-gray-300 mb-6">
+              This action cannot be undone. Are you sure?
+            </p>
+
+            <div className="flex justify-between gap-4">
+              <button
+                onClick={() => setDeleteId(null)}
+                className="bg-gray-600 px-4 py-2 rounded-lg"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={() => {
+                  deleteCourse(deleteId);
+                  setDeleteId(null);
+                }}
+                className="bg-red-500 px-4 py-2 rounded-lg"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

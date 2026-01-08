@@ -15,7 +15,10 @@ connectDB();
 
 app.use(
   cors({
-    origin: "https://intrudersec.in/", // frontend
+     origin: [
+      "https://intrudersec.in",
+      "http://localhost:5173"
+    ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // ✔ allow DELETE
     allowedHeaders: ["Content-Type", "Authorization", "x-admin-secret"], // ✔ include your custom header
     credentials: true,
